@@ -4,27 +4,8 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 public class Main {
-
-    public static double add(double num1, double num2) {
-        return num1 + num2;
-    }
-
-    public static double subtract(double num1, double num2) {
-        return num1 - num2;
-    }
-
-    public static double multiply(double num1, double num2) {
-        return num1 * num2;
-    }
-
-    public static double divide(double num1, double num2) {
-        if (num2 == 0.0) {
-            throw new ArithmeticException("division by zero is not allowed.");
-        }
-        return num1 / num2;
-    }
-
     public static void main(String[] args) {
+        Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
         double num1, num2;
         char operation, response;
@@ -43,16 +24,16 @@ public class Main {
 
                 switch (operation) {
                     case '+':
-                        System.out.printf("The total amount was %.2f%n", add(num1, num2));
+                        System.out.printf("The total amount was %.2f%n", calculator.add(num1, num2));
                         break;
                     case '-':
-                        System.out.printf("The value of the subtraction was %.2f%n", subtract(num1, num2));
+                        System.out.printf("The value of the subtraction was %.2f%n", calculator.subtract(num1, num2));
                         break;
                     case '/':
-                        System.out.printf("The value of the division was %.2f%n", divide(num1, num2));
+                        System.out.printf("The value of the division was %.2f%n", calculator.divide(num1, num2));
                         break;
                     case '*':
-                        System.out.printf("The result of the multiplication was %.2f%n", multiply(num1, num2));
+                        System.out.printf("The result of the multiplication was %.2f%n", calculator.multiply(num1, num2));
                         break;
                     default:
                         System.err.println("Error: invalid operation.");
