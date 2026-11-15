@@ -18,6 +18,9 @@ public class Main {
     }
 
     public static double divide(double num1, double num2) {
+        if (num2 == 0.0) {
+            throw new ArithmeticException("division by zero is not allowed.");
+        }
         return num1 / num2;
     }
 
@@ -46,11 +49,7 @@ public class Main {
                         System.out.printf("The value of the subtraction was %.2f%n", subtract(num1, num2));
                         break;
                     case '/':
-                        if (num2 == 0.0) {
-                            System.err.println("Error: division by zero is not allowed.");
-                        } else {
-                            System.out.printf("The value of the division was %.2f%n", divide(num1, num2));
-                        }
+                        System.out.printf("The value of the division was %.2f%n", divide(num1, num2));
                         break;
                     case '*':
                         System.out.printf("The result of the multiplication was %.2f%n", multiply(num1, num2));
@@ -69,6 +68,8 @@ public class Main {
             } catch (InputMismatchException e) {
                 System.err.println("Error: invalid number.");
                 scanner.next();
+            } catch (ArithmeticException e) {
+                System.err.println("Error: " + e.getMessage());
             }
         }
         scanner.close();
